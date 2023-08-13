@@ -1,20 +1,22 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+/** @format */
+
+const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
-let userGoal = 'Learn Docker!';
+let userGoal = "Learn Docker!";
 
 app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
+	bodyParser.urlencoded({
+		extended: false,
+	})
 );
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-app.get('/', (req, res) => {
-  res.send(`
+app.get("/", (req, res) => {
+	res.send(`
     <html>
       <head>
         <link rel="stylesheet" href="styles.css">
@@ -36,11 +38,13 @@ app.get('/', (req, res) => {
   `);
 });
 
-app.post('/store-goal', (req, res) => {
-  const enteredGoal = req.body.goal;
-  console.log(enteredGoal);
-  userGoal = enteredGoal;
-  res.redirect('/');
+app.post("/store-goal", (req, res) => {
+	const enteredGoal = req.body.goal;
+	console.log(enteredGoal);
+	userGoal = enteredGoal;
+	res.redirect("/");
 });
 
-app.listen(80);
+app.listen(3000, () => {
+	console.log(`App listening at http://localhost:${port}`);
+});
